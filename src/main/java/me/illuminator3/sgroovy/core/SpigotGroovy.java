@@ -53,7 +53,7 @@ public class SpigotGroovy
 
         for (var addon : addons)
         {
-            log.config("Enabling addon " + addon.getName() + " v" + addon.getVersion() + " by " + addon.getAuthor() + " which main is " + addon.getMain());
+            log.info("Enabling addon " + addon.getName() + " v" + addon.getVersion() + " by " + addon.getAuthor() + " which main is " + addon.getMain());
 
             if (AddonLoader.enable(addon))
                 enabledAddons.add(addon);
@@ -68,7 +68,7 @@ public class SpigotGroovy
 
         for (var addon : enabledAddons)
         {
-            log.config("Disabling addon " + addon.getName() + " v" + addon.getVersion() + " by " + addon.getAuthor() + " which main is " + addon.getMain());
+            log.info("Disabling addon " + addon.getName() + " v" + addon.getVersion() + " by " + addon.getAuthor() + " which main is " + addon.getMain());
 
             AddonLoader.disable(addon);
         }
