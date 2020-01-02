@@ -11,6 +11,9 @@ package me.illuminator3.sgroovy.api
 import lombok.Getter
 import me.illuminator3.sgroovy.api.command.Command
 import me.illuminator3.sgroovy.core.SpigotGroovy
+import org.bukkit.event.Listener
+
+import java.util.logging.Logger
 
 @SuppressWarnings("unused")
 abstract class SpigotPlugin
@@ -35,6 +38,9 @@ abstract class SpigotPlugin
 
             method.invoke(SpigotPlugin.class, command)
         }
+
+        for (def listener : listeners)
+            SpigotGroovy.getInstance().getServer().getPluginManager().registerEvents(listener as Listener, SpigotGroovy.getInstance())
     }
 
     protected final void disable()
@@ -50,5 +56,10 @@ abstract class SpigotPlugin
     final void addListener(final EventListener listener)
     {
         listeners.add(listener)
+    }
+
+    static final Logger getLogger()
+    {
+        return SpigotGroovy.getInstance().getLogger()
     }
 }
