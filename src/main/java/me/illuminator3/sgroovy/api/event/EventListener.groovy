@@ -8,5 +8,8 @@
 
 package me.illuminator3.sgroovy.api.event
 
+import org.bukkit.event.Listener
+
 interface EventListener
+    extends Listener
 { /* EMPTY */ }
